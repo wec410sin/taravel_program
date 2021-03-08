@@ -13,16 +13,29 @@ plans = [
 {name: "九州旅行", price: 15000},
 ]
 
-print "プランの番号を選択 > "
-select_plan_num = gets.to_i
+while true
+  print "プランの番号を選択 > "
+  select_plan_num = gets.to_i
+  break if (1..3).include?(select_plan_num)
+  puts "1〜3の番号を入力して下さい。"
+end
 chosen_plan = plans[select_plan_num -1]
 
 puts "#{chosen_plan[:name]}ですね。"
 puts "何名で予約されますか？"
-puts "人数を入力 > "
-quantity_of_plan = gets.to_i
 
-total_price = chosen_plan[:price] * quantity_of_plan
+while true
+  puts "人数を入力 > "
+  quantity_of_plan = gets.to_i
+  break if quantity_of_plan >= 1
+  puts "1以上を入力して下さい。"
+end
 
 puts "#{quantity_of_plan}名ですね。"
-puts "合計金額は#{total_price}円になります。"
+
+total_price = chosen_plan[:price] * quantity_of_plan
+if quantity_of_plan >= 5
+  puts "5名以上ですので10%割引となります"
+  total_price *= 0.9
+end
+puts "合計金額は#{total_price.floor}円になります。"
