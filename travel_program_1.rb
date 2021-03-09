@@ -8,9 +8,9 @@ puts <<~TEXT
      TEXT
 
 plans = [
-{name: "沖縄旅行", price: 10000},
-{name: "北海道旅行", price: 20000},
-{name: "九州旅行", price: 15000},
+{ place: "沖縄旅行", price: 10000},
+{ place: "北海道旅行", price: 20000},
+{ place: "九州旅行", price: 15000},
 ]
 
 while true
@@ -21,20 +21,20 @@ while true
 end
 chosen_plan = plans[select_plan_num -1]
 
-puts "#{chosen_plan[:name]}ですね。"
+puts "#{chosen_plan[:place]}ですね。"
 puts "何名で予約されますか？"
 
 while true
   puts "人数を入力 > "
-  quantity_of_plan = gets.to_i
-  break if quantity_of_plan >= 1
+  people_num = gets.to_i
+  break if people_num >= 1
   puts "1以上を入力して下さい。"
 end
 
-puts "#{quantity_of_plan}名ですね。"
+puts "#{people_num}名ですね。"
 
-total_price = chosen_plan[:price] * quantity_of_plan
-if quantity_of_plan >= 5
+total_price = chosen_plan[:price] * people_num
+if people_num >= 5
   puts "5名以上ですので10%割引となります"
   total_price *= 0.9
 end
